@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.dleal.canteen.R
 
-class MainActivityFragment : Fragment() {
+class StudentListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View =
