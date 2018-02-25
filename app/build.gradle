@@ -24,7 +24,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-            buildConfigField "boolean", "FABRIC_ENABLED", "true"
+            buildConfigField "boolean", "FABRIC_ENABLED", "false"
         }
         release {
             minifyEnabled false
@@ -45,6 +45,11 @@ ext {
     //Architecture components
     constraintLayoutVersion = "1.0.2"
     archComponentsVersion = '1.1.0'
+
+    //Rx
+    rxJavaVersion = '2.1.10'
+    rxAndroidVersion = '2.0.2'
+    rxKotlin = '2.2.0'
 }
 
 dependencies {
