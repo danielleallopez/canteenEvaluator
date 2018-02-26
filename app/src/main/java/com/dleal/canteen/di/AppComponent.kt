@@ -12,7 +12,7 @@ import javax.inject.Singleton
  * Created by Daniel Leal on 25/2/18.
  */
 @Singleton
-@Component(modules = [AndroidInjectionModule::class])
+@Component(modules = [AndroidInjectionModule::class, AppModule::class])
 interface AppComponent {
 
     fun inject(application: CanteenApplication)

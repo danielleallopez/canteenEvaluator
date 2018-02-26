@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Informe de comedor</string>
+    <string name="no_students">No hay estudiantes registrados</string>
 </resources>
