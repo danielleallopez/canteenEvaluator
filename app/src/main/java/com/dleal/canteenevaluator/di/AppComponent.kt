@@ -1,14 +1,19 @@
 package com.dleal.canteenevaluator.di
 
-import android.app.Application
 import com.dleal.canteenevaluator.CanteenApplication
 import dagger.BindsInstance
 import dagger.Component
-import dagger.android.AndroidInjectionModule
+import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AndroidInjectionModule::class, AppModule::class, ViewModelModule::class])
+@Component(
+    modules = [
+        AndroidSupportInjectionModule::class,
+        AppModule::class,
+        BuildersModule::class,
+        ViewModelModule::class]
+)
 interface AppComponent {
 
     fun inject(application: CanteenApplication)
@@ -17,7 +22,7 @@ interface AppComponent {
     interface Builder {
 
         @BindsInstance
-        fun application(application: Application): Builder
+        fun application(application: CanteenApplication): Builder
 
         fun build(): AppComponent
     }

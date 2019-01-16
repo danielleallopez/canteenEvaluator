@@ -1,12 +1,21 @@
 package com.dleal.canteenevaluator.di
 
-import com.dleal.canteenevaluator.MainActivity
+import android.content.Context
+import com.dleal.canteenevaluator.CanteenApplication
+import com.dleal.canteenevaluator.utils.reporting.FabricReporter
+import com.dleal.canteenevaluator.utils.reporting.Reporter
 import dagger.Module
-import dagger.android.ContributesAndroidInjector
+import dagger.Provides
+import javax.inject.Singleton
 
 @Module
-abstract class AppModule {
+class AppModule {
 
-    @ContributesAndroidInjector
-    abstract fun bindMainActivity(): MainActivity
+    @Provides
+    @Singleton
+    fun provideContext(consumerApp: CanteenApplication): Context = consumerApp.applicationContext
+
+    @Provides
+    @Singleton
+    fun provideFabricReporter(context: Context): Reporter = FabricReporter(context)
 }
