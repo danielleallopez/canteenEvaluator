@@ -26,7 +26,7 @@ class StudentListViewModel @Inject constructor() : BaseViewModel() {
         studentGroupUiModel.value = StudentListUiModel(showProgress = true)
     }
 
-    override fun start() {
+    fun start() {
         Handler().postDelayed({ studentGroupUiModel.value = StudentListUiModel(false, studentList) }, 2000)
     }
 

@@ -21,6 +21,4 @@ abstract class BaseViewModel : ViewModel(), CLogger {
         }
         compositeDisposable.add(disposable)
     }
-
-    abstract fun start()
 }

@@ -6,16 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.dleal.canteenevaluator.di.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-abstract class BaseFragment<out T : BaseViewModel> : Fragment() {
+abstract class BaseFragment<ViewModel : BaseViewModel> : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    protected val viewModel: T by lazy { provideViewModel() }
+    protected abstract val clazz: Class<ViewModel>
+
+    protected val viewModel: ViewModel by lazy { provideViewModel() }
 
     @LayoutRes
     protected abstract fun getLayoutId(): Int
@@ -30,10 +33,5 @@ abstract class BaseFragment<out T : BaseViewModel> : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(getLayoutId(), container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.start()
-    }
-
-    protected abstract fun provideViewModel(): T
+    private fun provideViewModel(): ViewModel = ViewModelProviders.of(this, viewModelFactory).get(clazz)
 }

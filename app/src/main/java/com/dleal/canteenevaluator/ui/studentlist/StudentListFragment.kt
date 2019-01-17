@@ -15,8 +15,8 @@ class StudentListFragment : BaseFragment<StudentListViewModel>() {
 
     override fun getLayoutId(): Int = R.layout.student_list_fragment
 
-    override fun provideViewModel(): StudentListViewModel =
-        ViewModelProviders.of(this, viewModelFactory).get(StudentListViewModel::class.java)
+    override val clazz: Class<StudentListViewModel>
+        get() = StudentListViewModel::class.java
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,6 +24,8 @@ class StudentListFragment : BaseFragment<StudentListViewModel>() {
         configureStudentList()
 
         observeStudentListEvents()
+
+        viewModel.start()
     }
 
     private fun observeStudentListEvents() {
