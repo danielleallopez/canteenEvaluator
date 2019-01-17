@@ -19,10 +19,6 @@
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-
-        <meta-data
-                android:name="io.fabric.ApiKey"
-                android:value="${fabricApiKey}"/>
     </application>
 
 </manifest>
