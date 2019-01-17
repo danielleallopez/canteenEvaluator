@@ -1,6 +1,7 @@
 package com.dleal.canteenevaluator.di
 
 import androidx.lifecycle.ViewModel
+import com.dleal.canteenevaluator.ui.studentCreation.CreateStudentViewModel
 import com.dleal.canteenevaluator.ui.studentlist.StudentListViewModel
 import dagger.Binds
 import dagger.Module
@@ -15,4 +16,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(StudentListViewModel::class)
     abstract fun bindStudentListViewModel(studentListViewModel: StudentListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CreateStudentViewModel::class)
+    abstract fun bindCreateStudentViewModel(createStudentViewModel: CreateStudentViewModel): ViewModel
 }

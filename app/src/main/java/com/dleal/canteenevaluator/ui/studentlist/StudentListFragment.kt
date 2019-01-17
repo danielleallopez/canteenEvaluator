@@ -3,7 +3,7 @@ package com.dleal.canteenevaluator.ui.studentlist
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dleal.canteenevaluator.R
 import com.dleal.canteenevaluator.ui.base.BaseFragment
@@ -23,7 +23,10 @@ class StudentListFragment : BaseFragment<StudentListViewModel>() {
 
         configureStudentList()
 
+        configureStudentCreationButton()
+
         observeStudentListEvents()
+        observeCreateStudentNavigationEvent()
 
         viewModel.start()
     }
@@ -50,6 +53,12 @@ class StudentListFragment : BaseFragment<StudentListViewModel>() {
         })
     }
 
+    private fun observeCreateStudentNavigationEvent() {
+        viewModel.createStudentNavigationEvent.observe(this, Observer {
+            findNavController().navigate(R.id.openStudentCreation)
+        })
+    }
+
     private fun configureStudentList() {
         val viewManager = LinearLayoutManager(context)
         val studentListAdapter = StudentListAdapter()
@@ -61,5 +70,9 @@ class StudentListFragment : BaseFragment<StudentListViewModel>() {
 
             adapter = studentListAdapter
         }
+    }
+
+    private fun configureStudentCreationButton() {
+        btn_add_student.setOnClickListener { viewModel.onAddUserClick() }
     }
 }
