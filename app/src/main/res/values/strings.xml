@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">CanteenEvaluator</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="no_students">There are no registered students</string>
+    <string name="title_create_student">Please input the student data</string>
+    <string name="header_create_student">Please input the student data</string>
+    <string name="field_student_name">Student name</string>
+    <string name="field_student_course">Course</string>
 </resources>
