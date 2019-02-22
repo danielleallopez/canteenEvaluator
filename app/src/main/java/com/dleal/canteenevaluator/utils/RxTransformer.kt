@@ -1,7 +1,7 @@
 package com.dleal.canteenevaluator.utils
 
 import com.dleal.canteenevaluator.BuildConfig
-import com.dleal.canteenevaluator.utils.reporting.FabricReporter
+import com.dleal.canteenevaluator.utils.reporting.Reporter
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.SingleTransformer
@@ -9,7 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class RxTransformer @Inject constructor(private val fabricReporter: FabricReporter) {
+class RxTransformer @Inject constructor(private val fabricReporter: Reporter) {
 
     private val IO_SCHEDULER: Scheduler by lazy { Schedulers.io() }
     private val COMPUTATION_SCHEDULER: Scheduler by lazy { Schedulers.computation() }

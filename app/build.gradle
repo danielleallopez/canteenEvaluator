@@ -18,6 +18,12 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         buildConfigField "int", "DATABASE_VERSION", '1'
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {

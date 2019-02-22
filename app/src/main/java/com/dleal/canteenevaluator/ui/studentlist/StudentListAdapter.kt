@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dleal.canteen.domain.Student
-import com.dleal.canteen.domain.StudentGroup
+import com.dleal.canteenevaluator.domain.Student
+import com.dleal.canteenevaluator.domain.StudentGroup
 import com.dleal.canteenevaluator.R
 import kotlinx.android.synthetic.main.item_student.view.*
 

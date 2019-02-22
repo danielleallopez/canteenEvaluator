@@ -21,7 +21,7 @@ class FabricReporter(private val context: Context) : Reporter {
         }
     }
 
-    fun logException(throwable: Throwable) {
+    override fun logException(throwable: Throwable) {
         if (BuildConfig.FABRIC_ENABLED) {
             Crashlytics.logException(throwable)
         }

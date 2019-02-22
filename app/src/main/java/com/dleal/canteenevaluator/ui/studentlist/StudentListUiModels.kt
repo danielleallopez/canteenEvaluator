@@ -1,6 +1,6 @@
 package com.dleal.canteenevaluator.ui.studentlist
 
-import com.dleal.canteen.domain.StudentGroup
+import com.dleal.canteenevaluator.domain.StudentGroup
 
 data class StudentListUiModel(
     val showProgress: Boolean,

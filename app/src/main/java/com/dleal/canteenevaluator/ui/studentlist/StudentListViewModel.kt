@@ -2,8 +2,8 @@ package com.dleal.canteenevaluator.ui.studentlist
 
 import android.os.Handler
 import androidx.lifecycle.MutableLiveData
-import com.dleal.canteen.domain.Student
-import com.dleal.canteen.domain.StudentGroup
+import com.dleal.canteenevaluator.domain.Student
+import com.dleal.canteenevaluator.domain.StudentGroup
 import com.dleal.canteenevaluator.ui.base.BaseViewModel
 import com.dleal.canteenevaluator.ui.base.SingleLiveEvent
 import java.util.*

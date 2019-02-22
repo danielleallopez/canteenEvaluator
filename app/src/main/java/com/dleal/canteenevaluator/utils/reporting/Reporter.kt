@@ -10,4 +10,6 @@ interface Reporter {
      * @param enableCrashlytics should always be `false` for debug builds.
      */
     fun initFabric(enableCrashlytics: Boolean = !BuildConfig.DEBUG)
+
+    fun logException(throwable: Throwable)
 }

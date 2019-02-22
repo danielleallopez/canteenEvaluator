@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/navigation"
         app:startDestination="@id/studentListFragment">
 
-    <fragment android:id="@+id/studentListFragment"
-              android:name="com.dleal.canteenevaluator.ui.studentlist.StudentListFragment"
-              android:label="student_list_fragment" tools:layout="@layout/student_list_fragment">
+    <fragment
+            android:id="@+id/studentListFragment"
+            android:name="com.dleal.canteenevaluator.ui.studentlist.StudentListFragment"
+            android:label="student_list_fragment"
+            tools:layout="@layout/student_list_fragment">
         <action
                 android:id="@+id/openStudentCreation"
                 app:destination="@id/createStudentFragment"
@@ -14,10 +18,21 @@
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right"/>
+        <argument
+                android:name="newStudent"
+                app:argType="com.dleal.canteenevaluator.domain.Student"
+                app:nullable="true"
+                android:defaultValue="@null"/>
     </fragment>
     <fragment
             android:id="@+id/createStudentFragment"
             android:name="com.dleal.canteenevaluator.ui.studentCreation.CreateStudentFragment"
             android:label="create_student_fragment"
-            tools:layout="@layout/create_student_fragment"/>
+            tools:layout="@layout/create_student_fragment">
+        <action
+                android:id="@+id/backToStudentList"
+                app:destination="@id/studentListFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_right"/>
+    </fragment>
 </navigation>

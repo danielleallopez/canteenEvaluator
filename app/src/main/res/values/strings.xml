@@ -13,4 +13,8 @@
     <string name="dialog_create_another">Create another</string>
     <string name="dialog_edit_student">Go to student</string>
 
+    //Student creation errors
+    <string name="create_student_missing_name">Must fill name field</string>
+    <string name="create_student_missing_surname">Must fill surname field</string>
+
 </resources>
