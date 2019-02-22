@@ -2,10 +2,13 @@ package com.dleal.canteenevaluator.ui.base
 
 import androidx.lifecycle.ViewModel
 import com.dleal.canteenevaluator.utils.CLogger
+import com.dleal.canteenevaluator.utils.RxTransformer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class BaseViewModel : ViewModel(), CLogger {
+abstract class BaseViewModel(
+    open val rxTransformer: RxTransformer? = null
+) : ViewModel(), CLogger {
 
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
