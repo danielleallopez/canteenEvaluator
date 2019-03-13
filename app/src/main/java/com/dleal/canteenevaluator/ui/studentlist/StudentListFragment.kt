@@ -7,6 +7,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dleal.canteenevaluator.R
 import com.dleal.canteenevaluator.ui.base.BaseFragment
+import com.dleal.canteenevaluator.utils.disable
+import com.dleal.canteenevaluator.utils.enable
 import com.dleal.canteenevaluator.utils.hide
 import com.dleal.canteenevaluator.utils.show
 import kotlinx.android.synthetic.main.student_list_fragment.*
@@ -36,16 +38,21 @@ class StudentListFragment : BaseFragment<StudentListViewModel>() {
             studentListUiModel?.let {
                 with(it) {
                     when {
-                        showProgress -> progress_student_list.show()
+                        showProgress -> {
+                            progress_student_list.show()
+                            btn_add_student.disable()
+                        }
                         studentList.isEmpty() -> {
                             progress_student_list.hide()
                             txt_student_list_empty_case.show()
+                            btn_add_student.enable()
                         }
                         else -> {
                             progress_student_list.hide()
                             txt_student_list_empty_case.hide()
                             rv_students.show()
                             (rv_students.adapter as StudentListAdapter).updateStudentList(studentList)
+                            btn_add_student.enable()
                         }
                     }
                 }

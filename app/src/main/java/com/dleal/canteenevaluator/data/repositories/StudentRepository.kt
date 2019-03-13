@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class StudentRepository @Inject constructor(private val localDataSource: Local) {
 
-    fun getStudent() = localDataSource.getStudentList()
+    fun getStudentList() = localDataSource.getStudentList()
 
     fun createStudent(student: StudentData) = localDataSource.createStudent(student)
 

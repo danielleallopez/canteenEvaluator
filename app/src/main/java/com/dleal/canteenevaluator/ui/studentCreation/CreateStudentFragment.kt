@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.fragment.findNavController
 import com.dleal.canteenevaluator.R
 import com.dleal.canteenevaluator.ui.base.BaseFragment
@@ -28,7 +29,8 @@ class CreateStudentFragment : BaseFragment<CreateStudentViewModel>() {
     private fun observeCreateStudentNavigationEvent() {
         viewModel.createStudentNavigationEvent.observe(this, Observer {
             val bundle = bundleOf(CREATED_STUDENT to it.student)
-            findNavController().navigate(R.id.backToStudentList, bundle)
+            findNavController()
+                .navigate(R.id.backToStudentList, bundle, NavOptionsBuilder)
         })
     }
 
