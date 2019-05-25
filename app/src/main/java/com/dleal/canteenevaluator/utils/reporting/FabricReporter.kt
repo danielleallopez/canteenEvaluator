@@ -3,27 +3,28 @@ package com.dleal.canteenevaluator.utils.reporting
 import android.content.Context
 import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.core.CrashlyticsCore
-import com.dleal.canteenevaluator.BuildConfig
 import io.fabric.sdk.android.Fabric
 
-class FabricReporter(private val context: Context) : Reporter {
+class FabricReporter(private val fabricConfig: FabricConfig) : Reporter(fabricConfig) {
 
-    override fun initFabric(enableCrashlytics: Boolean) {
+    init {
         val crashlytics = Crashlytics.Builder()
-            .core(CrashlyticsCore.Builder().disabled(!enableCrashlytics).build())
+            .core(CrashlyticsCore.Builder().disabled(!fabricConfig.reportingEnabled).build())
             .build()
-        Fabric.with(context, crashlytics)
+        Fabric.with(fabricConfig.context, crashlytics)
     }
 
-    fun log(message: String) {
-        if (BuildConfig.FABRIC_ENABLED) {
+    override fun log(message: String) {
+        if (fabricConfig.reportingEnabled) {
             Crashlytics.log(message)
         }
     }
 
     override fun logException(throwable: Throwable) {
-        if (BuildConfig.FABRIC_ENABLED) {
+        if (fabricConfig.reportingEnabled) {
             Crashlytics.logException(throwable)
         }
     }
 }
+
+class FabricConfig(val context: Context, reportingEnabled: Boolean) : ReporterConfig(reportingEnabled)

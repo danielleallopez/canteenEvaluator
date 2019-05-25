@@ -6,10 +6,12 @@ import androidx.room.Room
 import com.dleal.canteenevaluator.BuildConfig
 import com.dleal.canteenevaluator.CanteenApplication
 import com.dleal.canteenevaluator.data.base.local.AppDatabase
+import com.dleal.canteenevaluator.utils.reporting.FabricConfig
 import com.dleal.canteenevaluator.utils.reporting.FabricReporter
 import com.dleal.canteenevaluator.utils.reporting.Reporter
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -21,7 +23,17 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideFabricReporter(context: Context): Reporter = FabricReporter(context)
+    @Named(FABRIC_ENABLED)
+    fun provideFabricEnabled() = BuildConfig.FABRIC_ENABLED
+
+    @Provides
+    @Singleton
+    fun provideFabricConfig(@Named(FABRIC_ENABLED) fabricEnabled: Boolean,
+                            context: Context) = FabricConfig(context, fabricEnabled)
+
+    @Provides
+    @Singleton
+    fun provideFabricReporter(fabricConfig: FabricConfig): Reporter = FabricReporter(fabricConfig)
 
     @Provides
     @Singleton
@@ -37,9 +49,11 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(context: Context): SharedPreferences = context.getSharedPreferences(PREFERENCES,
+    fun provideSharedPreferences(context: Context): SharedPreferences = context.getSharedPreferences(
+        PREFERENCES,
         Context.MODE_PRIVATE
     )
 }
 
 private const val PREFERENCES = "appPreferences"
+private const val FABRIC_ENABLED = "fabricEnabled"

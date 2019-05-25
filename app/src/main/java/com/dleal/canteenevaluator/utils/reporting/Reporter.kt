@@ -1,15 +1,13 @@
 package com.dleal.canteenevaluator.utils.reporting
 
-import com.dleal.canteenevaluator.BuildConfig
-
-interface Reporter {
-
-    /**
-     * Initializes Fabric.
-     *
-     * @param enableCrashlytics should always be `false` for debug builds.
-     */
-    fun initFabric(enableCrashlytics: Boolean = !BuildConfig.DEBUG)
-
-    fun logException(throwable: Throwable)
+/**
+ * Created by Daniel Leal on 2019-05-25.
+ */
+abstract class Reporter(val reporterConfig: ReporterConfig) {
+    abstract fun log(message: String)
+    abstract fun logException(throwable: Throwable)
 }
+
+abstract class ReporterConfig(
+    val reportingEnabled: Boolean
+)
