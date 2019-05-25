@@ -7,16 +7,16 @@ import javax.inject.Inject
 /**
  * Created by Daniel Leal on 25/2/18.
  */
-class FabricReporter @Inject constructor() {
+class FabricReporter @Inject constructor(reporterConfig: ReporterConfig) : Reporter(reporterConfig) {
 
-    fun log(message: String) {
-        if (BuildConfig.FABRIC_ENABLED) {
+    override fun log(message: String) {
+        if (reporterConfig.reportingEnabled) {
             Crashlytics.log(message)
         }
     }
 
-    fun logException(throwable: Throwable) {
-        if (BuildConfig.FABRIC_ENABLED) {
+    override fun logException(throwable: Throwable) {
+        if (reporterConfig.reportingEnabled) {
             Crashlytics.logException(throwable)
         }
     }
