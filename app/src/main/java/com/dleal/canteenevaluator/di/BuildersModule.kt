@@ -1,8 +1,8 @@
 package com.dleal.canteenevaluator.di
 
-import com.dleal.canteenevaluator.MainActivity
-import com.dleal.canteenevaluator.ui.studentCreation.CreateStudentFragment
-import com.dleal.canteenevaluator.ui.studentlist.StudentListFragment
+import com.dleal.canteenevaluator.ui.main.MainActivity
+import com.dleal.studentcreation.ui.studentCreation.CreateStudentActivity
+import com.dleal.studentcreation.ui.studentlist.StudentListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -16,5 +16,5 @@ abstract class BuildersModule {
     abstract fun bindStudentListFragment(): StudentListFragment
 
     @ContributesAndroidInjector
-    abstract fun bindCreateStudentFragment(): CreateStudentFragment
+    abstract fun bindCreateStudentActivity(): CreateStudentActivity
 }

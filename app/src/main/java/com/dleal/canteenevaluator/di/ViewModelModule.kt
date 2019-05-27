@@ -1,8 +1,9 @@
 package com.dleal.canteenevaluator.di
 
 import androidx.lifecycle.ViewModel
-import com.dleal.canteenevaluator.ui.studentCreation.CreateStudentViewModel
-import com.dleal.canteenevaluator.ui.studentlist.StudentListViewModel
+import com.dleal.core.di.ViewModelKey
+import com.dleal.studentcreation.ui.studentCreation.CreateStudentViewModel
+import com.dleal.studentcreation.ui.studentlist.StudentListViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
