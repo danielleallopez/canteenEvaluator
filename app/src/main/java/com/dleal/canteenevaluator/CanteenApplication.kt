@@ -1,37 +1,32 @@
 package com.dleal.canteenevaluator
 
-import android.app.Activity
-import android.app.Application
 import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.core.CrashlyticsCore
-import com.dleal.canteenevaluator.di.AppComponent
-import com.dleal.canteenevaluator.di.DaggerAppComponent
 import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import dagger.android.DaggerApplication
 import io.fabric.sdk.android.Fabric
 import javax.inject.Inject
 
-class CanteenApplication : Application(), HasActivityInjector {
+class CanteenApplication : DaggerApplication() {
+
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> = androidInjector
 
     @Inject
-    lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
+    lateinit var androidInjector: AndroidInjector<DaggerApplication>
 
-    override fun activityInjector(): AndroidInjector<Activity> = dispatchingActivityInjector
-
-    private val canteenComponent: AppComponent by lazy {
-        DaggerAppComponent
-            .builder()
-            .application(this)
-            .build()
-    }
+//    private val canteenComponent: AppComponent by lazy {
+//        DaggerAppComponent
+//            .builder()
+//            .application(this)
+//            .build()
+//    }
 
     override fun onCreate() {
         super.onCreate()
 
         initFabric()
 
-        canteenComponent.inject(this)
+//        canteenComponent.inject(this)
     }
 
     private fun initFabric() {

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CanteenEvaluator</string>
+
+    <string name="no_students">There are no registered students</string>
+
+    //Create student
+    <string name="header_create_student">Please input the student data</string>
+    <string name="field_student_name">Student name</string>
+    <string name="field_student_surname">Student surname</string>
+    <string name="field_student_course">Course</string>
+    <string name="btn_create_student">Create student</string>
+
+    <string name="dialog_back_list">Back to list</string>
+    <string name="dialog_create_another">Create another</string>
+    <string name="dialog_edit_student">Go to student</string>
+
+    //Student creation errors
+    <string name="create_student_missing_name">Must fill name field</string>
+    <string name="create_student_missing_surname">Must fill surname field</string>
+</resources>
