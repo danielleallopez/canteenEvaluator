@@ -38,7 +38,8 @@ class StudentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(student: Student) {
         itemView.apply {
-            txt_name.text = "${student.name} ${student.surname}"
+            val fullName = "${student.name} ${student.surname}"
+            txt_name.text = fullName
         }
     }
 }

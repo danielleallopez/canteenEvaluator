@@ -16,8 +16,8 @@ data class Student(
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
-        parcel.readString(),
-        parcel.readString(),
+        parcel.readString().orEmpty(),
+        parcel.readString().orEmpty(),
         parcel.readDate()
     )
 
