@@ -47,7 +47,7 @@ object Rx {
 
 object Fabric {
     const val crashlytics = "com.crashlytics.sdk.android:crashlytics:2.10.1@aar"
-    const val firebaseCore = "com.google.firebase:firebase-core:16.0.9"
+    const val firebaseCore = "com.google.firebase:firebase-core:17.0.0"
 }
 
 object Testing {
