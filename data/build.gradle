@@ -4,10 +4,11 @@ apply plugin: 'kotlin-android-extensions'
 
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion Sdk.compileVersion
 
     defaultConfig {
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdkVersion Sdk.minVersion
+        testInstrumentationRunner Testing.androidTestRunner
 
         buildConfigField "int", "DATABASE_VERSION", '1'
     }

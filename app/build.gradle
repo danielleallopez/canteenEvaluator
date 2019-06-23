@@ -7,13 +7,17 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion Sdk.compileVersion
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     defaultConfig {
         applicationId "com.dleal.canteenevaluator"
         minSdkVersion Sdk.minVersion
         targetSdkVersion Sdk.targetVersion
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        versionCode Version.code
+        versionName Version.name
+        testInstrumentationRunner Testing.androidTestRunner
 
         vectorDrawables.useSupportLibrary = true
 
@@ -26,13 +30,13 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             buildConfigField "boolean", "FABRIC_ENABLED", "false"
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             buildConfigField "boolean", "FABRIC_ENABLED", "true"
@@ -44,6 +48,12 @@ dependencies {
     implementation project(':core')
     implementation project(':data')
     implementation project(':student')
+
+    implementation AndroidX.core
+    implementation AndroidX.material
+
+    implementation Koin.viewmodel
+    testImplementation Koin.testing
 }
 
 apply plugin: 'com.google.gms.google-services'

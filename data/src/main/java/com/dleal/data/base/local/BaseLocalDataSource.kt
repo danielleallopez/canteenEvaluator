@@ -1,12 +1,11 @@
 package com.dleal.data.base.local
 
-import javax.inject.Inject
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-abstract class BaseLocalDataSource {
+abstract class BaseLocalDataSource : KoinComponent {
 
-    @Inject
-    lateinit var preferenceHelper: PreferenceHelper
+    protected val preferenceHelper: PreferenceHelper by inject()
 
-    @Inject
-    lateinit var appDatabase: AppDatabase
+    protected val appDatabase: AppDatabase by inject()
 }

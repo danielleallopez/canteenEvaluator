@@ -3,17 +3,25 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion Sdk.compileVersion
 
     defaultConfig {
+        minSdkVersion Sdk.minVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "boolean", "FABRIC_ENABLED", "false"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "boolean", "FABRIC_ENABLED", "true"
         }
     }
 
@@ -23,55 +31,40 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //Support libraries
-    def supportLibVersion = "1.1.0-alpha05"
-    api fileTree(dir: 'libs', include: ['*.jar'])
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api "androidx.appcompat:appcompat:$supportLibVersion"
-    api 'androidx.core:core-ktx:1.2.0-alpha01'
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
-    api "androidx.recyclerview:recyclerview:$supportLibVersion"
-    api "androidx.lifecycle:lifecycle-extensions:2.2.0-alpha01"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Kotlin.stdlib
+    implementation AndroidX.appcompat
+    implementation AndroidX.core
+    implementation AndroidX.constraintLayout
+    implementation AndroidX.recyclerView
+    implementation AndroidX.lifecycleExtensions
 
-    api "com.google.android.material:material:1.1.0-alpha06"
+    implementation AndroidX.material
 
     // Navigation
-    def nav_version = "1.0.0"
-    api "android.arch.navigation:navigation-fragment-ktx:$nav_version"
-    api "android.arch.navigation:navigation-ui-ktx:$nav_version"
-
-    // Dagger core
-    def daggerVersion = '2.22.1'
-    api "com.google.dagger:dagger:$daggerVersion"
-    api 'androidx.appcompat:appcompat:1.1.0-alpha05'
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-    // Dagger Android
-    api "com.google.dagger:dagger-android:$daggerVersion"
-    api("com.google.dagger:dagger-android-support:$daggerVersion") {
-        exclude group: "com.android.support", module: "support-v4"
-    }
-    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    implementation AndroidX.navigation_fragment
+    implementation AndroidX.navigation_ui
 
     //Rx
-    def rxJavaVersion = '2.1.10'
-    def rxAndroidVersion = '2.1.0'
-    def rxKotlin = '2.2.0'
-    api "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
-    api "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
-    api "io.reactivex.rxjava2:rxkotlin:$rxKotlin"
+    api Rx.java
+    api Rx.android
+    api Rx.kotlin
 
     //Room
-    def room_version = "2.1.0-beta01"
-    api "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    api "androidx.room:room-rxjava2:$room_version"
+    api Room.runtime
+    kapt Room.compiler
+    api Room.rxjava2
 
     //Fabric
-    api('com.crashlytics.sdk.android:crashlytics:2.10.1@aar') {
+    api(Fabric.crashlytics) {
         transitive = true
     }
-    api 'com.google.firebase:firebase-core:16.0.9'
+    api Fabric.firebaseCore
 
-    testImplementation 'junit:junit:4.13-beta-3'
-    androidTestImplementation 'androidx.test:runner:1.2.0-beta01'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-beta01'
+    api Koin.android
+    implementation Koin.viewmodel
+
+    testApi Testing.junit
+    androidTestApi Testing.testRunner
+    androidTestApi Testing.espressoCore
 }

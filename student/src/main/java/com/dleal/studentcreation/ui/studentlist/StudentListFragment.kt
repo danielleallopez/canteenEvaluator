@@ -11,13 +11,13 @@ import com.dleal.core.utils.show
 import com.dleal.studentcreation.R
 import com.dleal.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.student_list_fragment.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StudentListFragment : BaseFragment<StudentListViewModel>() {
 
-    override fun getLayoutId(): Int = R.layout.student_list_fragment
+    override val viewModel: StudentListViewModel by viewModel()
 
-    override val clazz: Class<StudentListViewModel>
-        get() = StudentListViewModel::class.java
+    override fun getLayoutId(): Int = R.layout.student_list_fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

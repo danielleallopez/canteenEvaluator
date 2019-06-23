@@ -7,9 +7,8 @@ import io.reactivex.Scheduler
 import io.reactivex.SingleTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
 
-class RxTransformer @Inject constructor(private val fabricReporter: Reporter) {
+class RxTransformer(private val fabricReporter: Reporter) {
 
     private val IO_SCHEDULER: Scheduler by lazy { Schedulers.io() }
     private val COMPUTATION_SCHEDULER: Scheduler by lazy { Schedulers.computation() }

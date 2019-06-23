@@ -2,17 +2,17 @@ package com.dleal.studentcreation.ui.studentCreation
 
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
-import com.dleal.ui.base.BaseActivity
 import com.dleal.studentcreation.R
+import com.dleal.ui.base.BaseActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_create_student.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CreateStudentActivity : BaseActivity<CreateStudentViewModel>() {
 
     override fun getLayoutId(): Int = R.layout.activity_create_student
 
-    override val clazz: Class<CreateStudentViewModel>
-        get() = CreateStudentViewModel::class.java
+    override val viewModel : CreateStudentViewModel by viewModel()
 
     private fun observeCreateStudentNavigationEvent() {
         viewModel.createStudentNavigationEvent.observe(this, Observer {

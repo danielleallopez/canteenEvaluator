@@ -8,9 +8,8 @@ import com.dleal.studentcreation.usecase.StudentUseCase
 import com.dleal.ui.base.BaseViewModel
 import com.dleal.ui.base.SingleLiveEvent
 import io.reactivex.Single
-import javax.inject.Inject
 
-class StudentListViewModel @Inject constructor(
+class StudentListViewModel(
     private val studentUseCase: StudentUseCase,
     override val rxTransformer: RxTransformer
 ) : BaseViewModel() {

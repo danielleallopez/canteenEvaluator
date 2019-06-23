@@ -1,17 +1,16 @@
 package com.dleal.studentcreation.ui.studentCreation
 
-import com.dleal.ui.base.BaseViewModel
-import com.dleal.ui.base.SingleLiveEvent
 import com.dleal.core.utils.RxTransformer
 import com.dleal.core.utils.safeLet
 import com.dleal.studentcreation.R
 import com.dleal.studentcreation.domain.Student
 import com.dleal.studentcreation.mappers.mapStudentToData
 import com.dleal.studentcreation.usecase.StudentUseCase
+import com.dleal.ui.base.BaseViewModel
+import com.dleal.ui.base.SingleLiveEvent
 import io.reactivex.Single
-import javax.inject.Inject
 
-class CreateStudentViewModel @Inject constructor(
+class CreateStudentViewModel(
     private val studentUseCase: StudentUseCase,
     override val rxTransformer: RxTransformer
 ) : BaseViewModel() {

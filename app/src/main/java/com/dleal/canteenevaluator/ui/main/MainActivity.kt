@@ -2,11 +2,11 @@ package com.dleal.canteenevaluator.ui.main
 
 import com.dleal.canteenevaluator.R
 import com.dleal.ui.base.BaseActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<MainViewModel>() {
 
-    override fun getLayoutId(): Int = R.layout.main_activity
+    override val viewModel: MainViewModel by viewModel()
 
-    override val clazz: Class<MainViewModel>
-        get() = MainViewModel::class.java
+    override fun getLayoutId(): Int = R.layout.main_activity
 }

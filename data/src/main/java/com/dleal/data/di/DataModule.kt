@@ -1,35 +1,33 @@
 package com.dleal.data.di
 
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.room.Room
+import com.dleal.data.BuildConfig
 import com.dleal.data.base.local.AppDatabase
-import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
+import org.koin.android.ext.koin.androidContext
+import org.koin.dsl.module
 
 /**
  * Created by Daniel Leal on 2019-05-26.
  */
-@Module
-class DataModule {
-    @Provides
-    @Singleton
-    fun provideDatabase(context: Context): AppDatabase {
-        val databaseBuilder = Room.databaseBuilder(context, AppDatabase::class.java, "canteenDB")
-//        if (BuildConfig.DEBUG) {
+val dataModule = module {
+    //Database
+    single {
+        val databaseBuilder = Room.databaseBuilder(androidContext(), AppDatabase::class.java, "canteenDB")
+        if (BuildConfig.DEBUG) {
             databaseBuilder.fallbackToDestructiveMigration()
-//        }
+        }
 
-        return databaseBuilder.build()
+        databaseBuilder.build()
     }
 
-    @Provides
-    @Singleton
-    fun provideSharedPreferences(context: Context): SharedPreferences = context.getSharedPreferences(
-        PREFERENCES,
-        Context.MODE_PRIVATE
-    )
+    //SharedPreferences
+    single {
+        androidContext().getSharedPreferences(
+            PREFERENCES,
+            Context.MODE_PRIVATE
+        )
+    }
 }
 
 private const val PREFERENCES = "appPreferences"

@@ -1,9 +1,8 @@
 package com.dleal.data.base.local
 
 import android.content.SharedPreferences
-import javax.inject.Inject
 
-class PreferenceHelper @Inject constructor(val sharedPreferences: SharedPreferences) {
+class PreferenceHelper(val sharedPreferences: SharedPreferences) {
 
     private fun edit(operation: (SharedPreferences.Editor) -> Unit) {
         val editor = sharedPreferences.edit()

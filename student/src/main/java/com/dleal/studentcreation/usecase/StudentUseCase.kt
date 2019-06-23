@@ -5,12 +5,11 @@ import com.dleal.data.repositories.StudentRepository
 import com.dleal.studentcreation.domain.Student
 import com.dleal.studentcreation.mappers.mapStudentDataToDomain
 import io.reactivex.Single
-import javax.inject.Inject
 
 /**
  * Created by Daniel Leal on 2019-05-25.
  */
-class StudentUseCase @Inject constructor(
+class StudentUseCase constructor(
     private val studentRepository: StudentRepository
 ) {
 
