@@ -1,3 +1,5 @@
+const val kotlinVersion = "1.3.60"
+
 object Sdk {
     const val minVersion = 16
     const val targetVersion = 28
@@ -9,9 +11,9 @@ object Version {
     const val name = "1.0.0"
 }
 
-object Kotlin {
-    private const val version = "1.3.31"
-    const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version"
+object Core {
+    const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    const val buildToolsVersion = "29.0.0"
 }
 
 object AndroidX {
@@ -24,9 +26,9 @@ object AndroidX {
     const val recyclerView = "androidx.recyclerview:recyclerview:$supportLibVersion"
 
     // Navigation
-    private const val nav_version = "1.0.0"
-    const val navigation_fragment = "android.arch.navigation:navigation-fragment-ktx:$nav_version"
-    const val navigation_ui = "android.arch.navigation:navigation-ui-ktx:$nav_version"
+    private const val nav_version = "2.0.0"
+    const val navigation_fragment = "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    const val navigation_ui = "androidx.navigation:navigation-ui-ktx:$nav_version"
 }
 
 object Room {

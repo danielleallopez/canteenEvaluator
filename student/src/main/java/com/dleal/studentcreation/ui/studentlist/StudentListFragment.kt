@@ -9,6 +9,7 @@ import com.dleal.core.utils.enable
 import com.dleal.core.utils.hide
 import com.dleal.core.utils.show
 import com.dleal.studentcreation.R
+import com.dleal.studentcreation.ui.studentCreation.CreateStudentActivity
 import com.dleal.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.student_list_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -83,6 +84,8 @@ class StudentListFragment : BaseFragment<StudentListViewModel>() {
     }
 
     private fun openStudentCreationScreen() {
-        TODO()
+        activity?.let {
+            CreateStudentActivity.open(it)
+        }
     }
 }

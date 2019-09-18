@@ -3,6 +3,8 @@ package com.dleal.studentcreation.di
 import com.dleal.data.repositories.Local
 import com.dleal.data.repositories.StudentRepository
 import com.dleal.studentcreation.ui.studentCreation.CreateStudentViewModel
+import com.dleal.studentcreation.ui.studentDetail.StudentDetailViewModel
+import com.dleal.studentcreation.ui.studentlist.StudentListViewModel
 import com.dleal.studentcreation.usecase.StudentUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -22,4 +24,8 @@ val studentCreationModule = module {
 
     //ViewModel
     viewModel { CreateStudentViewModel(get(), get()) }
+
+    viewModel { StudentListViewModel(get(), get()) }
+
+    viewModel { StudentDetailViewModel(get(), get()) }
 }

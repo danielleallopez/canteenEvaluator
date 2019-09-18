@@ -13,22 +13,22 @@
             tools:layout="@layout/student_list_fragment">
         <action
                 android:id="@+id/openStudentCreation"
-                app:destination="@id/createStudentFragment"
+                app:destination="@id/studentDetailFragment"
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right"/>
         <argument
                 android:name="newStudent"
-                app:argType="com.dleal.canteenevaluator.domain.Student"
+                app:argType="com.dleal.studentcreation.domain.Student"
                 app:nullable="true"
                 android:defaultValue="@null"/>
     </fragment>
     <fragment
-            android:id="@+id/createStudentFragment"
-            android:name="com.dleal.studentcreation.ui.studentCreation.CreateStudentFragment"
+            android:id="@+id/studentDetailFragment"
+            android:name="com.dleal.studentcreation.ui.studentDetail.StudentDetailFragment"
             android:label="create_student_fragment"
-            tools:layout="@layout/create_student_fragment">
+            tools:layout="@layout/student_detail_fragment">
         <action
                 android:id="@+id/backToStudentList"
                 app:destination="@id/studentListFragment"
