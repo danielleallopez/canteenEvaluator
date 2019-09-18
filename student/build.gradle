@@ -26,6 +26,7 @@ dependencies {
 
     implementation AndroidX.core
     implementation AndroidX.material
+    implementation AndroidX.constraintLayout
 
     implementation Koin.viewmodel
 }

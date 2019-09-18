@@ -24,9 +24,9 @@ object AndroidX {
     const val recyclerView = "androidx.recyclerview:recyclerview:$supportLibVersion"
 
     // Navigation
-    private const val nav_version = "1.0.0"
-    const val navigation_fragment = "android.arch.navigation:navigation-fragment-ktx:$nav_version"
-    const val navigation_ui = "android.arch.navigation:navigation-ui-ktx:$nav_version"
+    private const val nav_version = "2.0.0"
+    const val navigation_fragment = "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    const val navigation_ui = "androidx.navigation:navigation-ui-ktx:$nav_version"
 }
 
 object Room {

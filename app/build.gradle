@@ -54,6 +54,9 @@ dependencies {
 
     implementation Koin.viewmodel
     testImplementation Koin.testing
+
+    implementation AndroidX.navigation_fragment
+    implementation AndroidX.navigation_ui
 }
 
 apply plugin: 'com.google.gms.google-services'
