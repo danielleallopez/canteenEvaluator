@@ -20,9 +20,9 @@ class CreateStudentViewModel(
 
     fun onCreateStudentClick(name: String?, surname: String?) {
 
-        if (!validateName(name)) return
+        if (!isNameValid(name)) return
 
-        if (!validateSurname(surname)) return
+        if (!isSurnameValid(surname)) return
 
         safeLet(name, surname) { name, surname ->
             val student = Student(name = name, surname = surname)
@@ -39,7 +39,7 @@ class CreateStudentViewModel(
         }
     }
 
-    private fun validateName(name: String?): Boolean {
+    private fun isNameValid(name: String?): Boolean {
         if (name.isNullOrBlank()) {
             errorMessageEvent.value = R.string.create_student_missing_name
             return false
@@ -47,7 +47,7 @@ class CreateStudentViewModel(
         return true
     }
 
-    private fun validateSurname(surname: String?): Boolean {
+    private fun isSurnameValid(surname: String?): Boolean {
         if (surname.isNullOrBlank()) {
             errorMessageEvent.value = R.string.create_student_missing_surname
             return false

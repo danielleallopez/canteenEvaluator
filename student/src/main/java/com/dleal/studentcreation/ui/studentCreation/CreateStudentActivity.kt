@@ -1,9 +1,8 @@
 package com.dleal.studentcreation.ui.studentCreation
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import androidx.core.os.bundleOf
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.dleal.studentcreation.R
 import com.dleal.ui.base.BaseActivity
@@ -18,16 +17,27 @@ class CreateStudentActivity : BaseActivity<CreateStudentViewModel>() {
     override val viewModel: CreateStudentViewModel by viewModel()
 
     companion object {
-        fun open(callingActivity: Activity) {
+        fun openForResult(callingActivity: Activity) {
             val intent = Intent(callingActivity, CreateStudentActivity::class.java)
-            callingActivity.startActivity(intent)
+            callingActivity.startActivityForResult(intent, REQUEST_CODE_CREATE_STUDENT)
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        configureCreateStudentButton()
+
+        observeCreateStudentNavigationEvent()
+        observeErrorMessageEvent()
     }
 
     private fun observeCreateStudentNavigationEvent() {
         viewModel.createStudentNavigationEvent.observe(this, Observer {
-            val bundle = bundleOf(CREATED_STUDENT to it.student)
-            TODO("Return result")
+            val intent = Intent()
+            intent.putExtra(CREATED_STUDENT, it.student)
+            setResult(Activity.RESULT_OK, intent)
+            finish()
         })
     }
 
@@ -49,3 +59,4 @@ class CreateStudentActivity : BaseActivity<CreateStudentViewModel>() {
 }
 
 const val CREATED_STUDENT = "createdStudent"
+const val REQUEST_CODE_CREATE_STUDENT = 1000

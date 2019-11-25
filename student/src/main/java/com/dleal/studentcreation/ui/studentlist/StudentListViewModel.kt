@@ -20,6 +20,10 @@ class StudentListViewModel(
     private lateinit var studentList: StudentGroup
 
     fun start() {
+        loadStudents()
+    }
+
+    private fun loadStudents() {
         addDisposable(
             studentUseCase.getStudentList()
                 .flatMap { studentList: List<Student> ->
@@ -30,7 +34,9 @@ class StudentListViewModel(
                 .compose(rxTransformer.applyIoSchedulerToFlow())
                 .startWith(StudentListUiModel(showProgress = true))
                 .subscribe(
-                    { studentListUiModel: StudentListUiModel -> studentGroupUiModel.value = studentListUiModel },
+                    { studentListUiModel: StudentListUiModel ->
+                        studentGroupUiModel.value = studentListUiModel
+                    },
                     { TODO("Must implement error case") }
                 )
         )
@@ -38,5 +44,9 @@ class StudentListViewModel(
 
     fun onAddUserClick() {
         createStudentNavigationEvent.call()
+    }
+
+    fun onStudentCreated() {
+        loadStudents()
     }
 }
